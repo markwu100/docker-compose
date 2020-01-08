@@ -4,9 +4,16 @@ pipeline {
       label 'ubuntu-1604-aufs-stable'
     }
   }
+  
+  environment {
+    DISABLE_AUTH = 'true'
+    DB_ENGINE    = 'sqlite'
+  }
+  
   stages {
     stage('Build result') {
       steps {
+        sh 'printenv'
         sh 'docker build -t dockersamples/result ./result'
         echo 'Build result completed'
       }
