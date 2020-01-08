@@ -14,18 +14,18 @@ pipeline {
     stage('Build result') {
       steps {
         sh 'printenv'
-        sh 'docker build -t nzleoliang/dockersamples/result ./result'
+        sh 'docker build -t nzleoliang/result ./result'
         echo 'Build result completed'
       }
     } 
     stage('Build vote') {
       steps {
-        sh 'docker build -t nzleoliang/dockersamples/vote ./vote'
+        sh 'docker build -t nzleoliang/vote ./vote'
       }
     }
     stage('Build worker') {
       steps {
-        sh 'docker build -t nzleoliang/dockersamples/worker ./worker'
+        sh 'docker build -t nzleoliang/worker ./worker'
       }
     }
     stage('Push result image') {
@@ -36,7 +36,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
-          sh 'docker push nzleoliang/dockersamples/result'
+          sh 'docker push nzleoliang/result'
         }
       }
     }
@@ -48,7 +48,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
-          sh 'docker push nzleoliang/dockersamples/vote'
+          sh 'docker push nzleoliang/vote'
         }
       }
     }
@@ -60,7 +60,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
-          sh 'docker push nzleoliang/dockersamples/worker'
+          sh 'docker push nzleoliang/worker'
         }
       }
     }
