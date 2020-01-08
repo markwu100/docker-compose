@@ -30,7 +30,9 @@ pipeline {
     }
     stage('Push result image') {
       when {
-        branch 'master'
+        expression {
+          return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim() == "master"
+        }
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
@@ -40,7 +42,9 @@ pipeline {
     }
     stage('Push vote image') {
       when {
-        branch 'master'
+        expression {
+          return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim() == "master"
+        }
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
@@ -50,7 +54,9 @@ pipeline {
     }
     stage('Push worker image') {
       when {
-        branch 'master'
+        expression {
+          return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim() == "master"
+        }
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
