@@ -8,6 +8,7 @@ pipeline {
     stage('Build result') {
       steps {
         sh 'docker build -t dockersamples/result ./result'
+        echo 'Build result completed'
       }
     } 
     stage('Build vote') {
