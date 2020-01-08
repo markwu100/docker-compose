@@ -14,18 +14,18 @@ pipeline {
     stage('Build result') {
       steps {
         sh 'printenv'
-        sh 'docker build -t dockersamples/result ./result'
+        sh 'docker build -t nzleoliang/dockersamples/result ./result'
         echo 'Build result completed'
       }
     } 
     stage('Build vote') {
       steps {
-        sh 'docker build -t dockersamples/vote ./vote'
+        sh 'docker build -t nzleoliang/dockersamples/vote ./vote'
       }
     }
     stage('Build worker') {
       steps {
-        sh 'docker build -t dockersamples/worker ./worker'
+        sh 'docker build -t nzleoliang/dockersamples/worker ./worker'
       }
     }
     stage('Push result image') {
