@@ -31,7 +31,7 @@ pipeline {
     stage('Push result image') {
       when {
         expression {
-          return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim() == "master"
+          return env.GIT_BRANCH == "origin/master"
         }
       }
       steps {
@@ -43,7 +43,7 @@ pipeline {
     stage('Push vote image') {
       when {
         expression {
-          return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim() == "master"
+          return env.GIT_BRANCH == "origin/master"
         }
       }
       steps {
@@ -55,7 +55,7 @@ pipeline {
     stage('Push worker image') {
       when {
         expression {
-          return sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim() == "master"
+          return env.GIT_BRANCH == "origin/master"
         }
       }
       steps {
