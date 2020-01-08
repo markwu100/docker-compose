@@ -35,7 +35,7 @@ pipeline {
         }
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerhubid') {
+        withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
           sh 'docker push dockersamples/result'
         }
       }
@@ -47,7 +47,7 @@ pipeline {
         }
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerhubid') {
+        withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
           sh 'docker push dockersamples/vote'
         }
       }
@@ -59,7 +59,7 @@ pipeline {
         }
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerhubid') {
+        withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
           sh 'docker push dockersamples/worker'
         }
       }
