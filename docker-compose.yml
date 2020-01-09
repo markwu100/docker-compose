@@ -2,7 +2,8 @@ version: "3"
 
 services:
   vote:
-    build: ./vote
+    #build: ./vote
+    image: nzleoliang/vote:latest
     command: python app.py
     volumes:
      - ./vote:/app
@@ -13,7 +14,8 @@ services:
       - back-tier
 
   result:
-    build: ./result
+    #build: ./result
+    image: nzleoliang/result:latest
     command: nodemon server.js
     volumes:
       - ./result:/app
@@ -25,8 +27,9 @@ services:
       - back-tier
 
   worker:
-    build:
-      context: ./worker
+    # build:
+    #   context: ./worker
+    image: nzleoliang/worker:latest
     depends_on:
       - "redis"
       - "db"
