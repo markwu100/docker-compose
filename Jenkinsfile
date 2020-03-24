@@ -1,4 +1,9 @@
 def remote = [:]
+remote.name = 'test'
+remote.host = '45.76.126.131'
+remote.user = 'root'
+remote.password = 'q1%PB5ALqxpGsyEy'
+remote.allowAnyHosts = true
 pipeline {
   agent {
     node {
@@ -65,11 +70,6 @@ pipeline {
         }
       }
     }
-    remote.name = 'test'
-    remote.host = '45.76.126.131'
-    remote.user = 'root'
-    remote.password = 'q1%PB5ALqxpGsyEy'
-    remote.allowAnyHosts = true
     stage('Remote SSH') {
       sshCommand remote: remote, command: "ls -lrt"
       sshCommand remote: remote, command: "for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done"
