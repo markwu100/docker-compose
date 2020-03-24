@@ -1,5 +1,4 @@
 pipeline {
-  def remote = [:]
   agent {
     node {
       label 'ubuntu-1604-aufs-stable'
@@ -12,6 +11,7 @@ pipeline {
   }
   
   stages {
+    def remote = [:]
     stage('Build result') {
       steps {
         sh 'printenv'
