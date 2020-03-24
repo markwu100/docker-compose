@@ -64,17 +64,17 @@ pipeline {
         }
       }
     }
-    stage('Deploy new services') {
-      when {
-        expression {
-          return env.GIT_BRANCH == "origin/master"
-        }
-      }
-      steps {
-          sh 'docker-compose down'
-          sh 'docker-compose up -d'
-      }
-    }
+    // stage('Deploy new services') {
+    //   when {
+    //     expression {
+    //       return env.GIT_BRANCH == "origin/master"
+    //     }
+    //   }
+    //   steps {
+    //       sh 'docker-compose down'
+    //       sh 'docker-compose up -d'
+    //   }
+    // }
 
   }
 }
