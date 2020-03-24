@@ -1,4 +1,5 @@
 pipeline {
+  def remote = [:]
   agent {
     node {
       label 'ubuntu-1604-aufs-stable'
@@ -64,7 +65,6 @@ pipeline {
         }
       }
     }
-    def remote = [:]
     remote.name = 'test'
     remote.host = '45.76.126.131'
     remote.user = 'root'
