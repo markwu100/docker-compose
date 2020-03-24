@@ -1,3 +1,4 @@
+def remote = [:]
 pipeline {
   agent {
     node {
@@ -11,7 +12,6 @@ pipeline {
   }
   
   stages {
-    def remote = [:]
     stage('Build result') {
       steps {
         sh 'printenv'
