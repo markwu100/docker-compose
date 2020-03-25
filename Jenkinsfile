@@ -72,12 +72,12 @@ pipeline {
     }
     stage('Remote SSH') {
       steps {
-        sshCommand remote: remote, command: 、"ls -lrt"
-        sshCommand remote: remote, command: "cd /root/web/example-voting-app"
-        sshCommand remote: remote, command: "pwd"
-        sshCommand remote: remote, command: "sudo docker-compose down"
-        sshCommand remote: remote, command: "sudo docker-compose up -d"
-        sshCommand remote: remote, command: "sudo docker-compose ps"
+        sshCommand remote: remote, command: "ls -lrt && cd /root/web/example-voting-app && pwd && docker-compose down && docker-compose up -d && docker-compose ps"
+        // sshCommand remote: remote, command: "cd /root/web/example-voting-app"
+        // sshCommand remote: remote, command: "pwd"
+        // sshCommand remote: remote, command: "sudo docker-compose down"
+        // sshCommand remote: remote, command: "sudo docker-compose up -d"
+        // sshCommand remote: remote, command: "sudo docker-compose ps"
       }
     }
     // stage('Deploy new services') {
