@@ -1,5 +1,5 @@
 def remote = [:]
-remote.name = 'test'
+remote.name = 'web server'
 remote.host = '45.76.126.131'
 remote.user = 'root'
 remote.password = 'q1%PB5ALqxpGsyEy'
@@ -72,7 +72,8 @@ pipeline {
     }
     stage('Remote SSH') {
       steps {
-        sshCommand remote: remote, command: "sudo cd /root/web/example-voting-app"
+        sshCommand remote: remote, command: 、"ls -lrt"
+        sshCommand remote: remote, command: "cd /root/web/example-voting-app"
         sshCommand remote: remote, command: "pwd"
         sshCommand remote: remote, command: "sudo docker-compose down"
         sshCommand remote: remote, command: "sudo docker-compose up -d"
