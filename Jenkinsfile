@@ -17,6 +17,12 @@ pipeline {
   }
   
   stages {
+    stage('Static Check') {
+    } 
+    stage('Unit Testing check') {
+    }
+    stage('Integration Testing') {
+    }         
     stage('Build result') {
       steps {
         sh 'printenv'
@@ -34,6 +40,8 @@ pipeline {
         sh 'docker build -t nzleoliang/worker ./worker'
       }
     }
+    stage('E2E Testing') {
+    } 
     stage('Push result image') {
       when {
         expression {
