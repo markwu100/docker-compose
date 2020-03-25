@@ -18,31 +18,53 @@ pipeline {
   
   stages {
     stage('Static Check') {
+      steps {
+        sh 'echo Static Check'
+      }
     } 
-    stage('Unit Testing check') {
+    stage('Unit Testing') {
+      steps {
+        sh 'echo Unit Testing'
+      }
     }
     stage('Integration Testing') {
+      steps {
+        sh 'echo Integration Testing'
+      }
     }         
-    stage('Build result') {
+    stage('Build Result Image') {
       steps {
         sh 'printenv'
         sh 'docker build -t nzleoliang/result ./result'
         echo 'Build result completed'
       }
     } 
-    stage('Build vote') {
+    stage('Build Vote Image') {
       steps {
         sh 'docker build -t nzleoliang/vote ./vote'
       }
     }
-    stage('Build worker') {
+    stage('Build Worker Image') {
       steps {
         sh 'docker build -t nzleoliang/worker ./worker'
       }
     }
     stage('E2E Testing') {
+      steps {
+        parallel(
+          Chrome: {
+            echo "This is branch a"
+          },
+          Firefox: {
+            echo "This is branch b"
+          },
+          Safari: {
+            echo "This is branch b"
+          }
+        )
+      }    
     } 
-    stage('Push result image') {
+    stage('Push Result Image') {
       when {
         expression {
           return env.GIT_BRANCH == "origin/master"
@@ -54,7 +76,7 @@ pipeline {
         }
       }
     }
-    stage('Push vote image') {
+    stage('Push Vote Image') {
       when {
         expression {
           return env.GIT_BRANCH == "origin/master"
@@ -66,7 +88,7 @@ pipeline {
         }
       }
     }
-    stage('Push worker image') {
+    stage('Push Worker Image') {
       when {
         expression {
           return env.GIT_BRANCH == "origin/master"
