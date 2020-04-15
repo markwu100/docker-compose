@@ -97,6 +97,19 @@ pipeline {
         }
       }
     }
+
+
+    stage('Deploy the Application') {
+      when {
+        expression {
+          return env.GIT_BRANCH == "master"
+        }
+      }
+      steps {
+          sh 'docker-compose up -d'
+          sh 'docker-compose ps'
+      }
+    }
     // stage('Deployment') {
     //   steps {
     //     sshCommand remote: remote, command: 
