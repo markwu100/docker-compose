@@ -68,7 +68,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhub', url:'') {
-          sh 'docker push markwu100/result'
+          sh 'docker push markwu100/result docker-compose/result:latest'
         }
       }
     }
@@ -80,7 +80,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
-          sh 'docker push markwu100/vote'
+          sh 'docker push markwu100/vote docker-compose/vote:latest'
         }
       }
     }
@@ -92,7 +92,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhub', url:'') {
-          sh 'docker push markwu100/worker'
+          sh 'docker push markwu100/worker docker-compose/worker:latest'
         }
       }
     }
