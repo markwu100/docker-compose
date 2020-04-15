@@ -10,7 +10,7 @@ pipeline {
   environment {
     DISABLE_AUTH = 'true'
     DB_ENGINE    = 'sqlite'
-    GIT_BRANCH   = 'master'
+   //GIT_BRANCH   = 'master'
   }
   
   stages {
@@ -80,7 +80,7 @@ pipeline {
         }
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
+        withDockerRegistry(credentialsId: 'dockerhub', url:'') {
           sh 'docker push markwu100/vote'
         }
       }
