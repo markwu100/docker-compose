@@ -31,18 +31,18 @@ pipeline {
     stage('Build Result Image') {
       steps {
         sh 'printenv'
-        sh 'docker build -t docker-compose/result ./result'
+        sh 'docker build -t markwu100/result ./result'
         echo 'Build result completed'
       }
     } 
     stage('Build Vote Image') {
       steps {
-        sh 'docker build -t docker-compose/vote ./vote'
+        sh 'docker build -t markwu100/vote ./vote'
       }
     }
     stage('Build Worker Image') {
       steps {
-        sh 'docker build -t docker-compose/worker ./worker'
+        sh 'docker build -t markwu100/worker ./worker'
       }
     }
     stage('E2E Testing') {
@@ -68,7 +68,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhub', url:'') {
-          sh 'docker push markwu100/result docker-compose/result:latest'
+          sh 'docker push markwu100/result'
         }
       }
     }
@@ -80,7 +80,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhubid', url:'') {
-          sh 'docker push markwu100/vote docker-compose/vote:latest'
+          sh 'docker push markwu100/vote'
         }
       }
     }
@@ -92,7 +92,7 @@ pipeline {
       }
       steps {
         withDockerRegistry(credentialsId: 'dockerhub', url:'') {
-          sh 'docker push markwu100/worker docker-compose/worker:latest'
+          sh 'docker push markwu100/worker'
         }
       }
     }
