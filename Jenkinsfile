@@ -64,7 +64,7 @@ pipeline {
     stage('Push Result Image') {
       when {
         expression {
-          return env.GIT_BRANCH == "origin/master"
+          return env.GIT_BRANCH == "master"
         }
       }
       steps {
@@ -76,7 +76,7 @@ pipeline {
     stage('Push Vote Image') {
       when {
         expression {
-          return env.GIT_BRANCH == "origin/master"
+          return env.GIT_BRANCH == "master"
         }
       }
       steps {
@@ -88,7 +88,7 @@ pipeline {
     stage('Push Worker Image') {
       when {
         expression {
-          return env.GIT_BRANCH == "origin/master"
+          return env.GIT_BRANCH == "master"
         }
       }
       steps {
