@@ -10,6 +10,7 @@ pipeline {
   environment {
     DISABLE_AUTH = 'true'
     DB_ENGINE    = 'sqlite'
+    GIT_BRANCH   = 'master'
   }
   
   stages {
